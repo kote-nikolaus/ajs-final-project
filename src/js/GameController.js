@@ -161,7 +161,7 @@ export default class GameController {
       for (let i = 0; i < this.gameState.bothTeams.length; i++) {
         if (this.gameState.bothTeams[i].position === index) {
           const character = this.gameState.bothTeams[i].character;
-          let message = `\u{1F396}${character.level}\u{2694}${character.attack}\u{1F6E1}${character.defence}\u{2764}${character.health}`;
+          const message = this.createMessage(character);
           this.gamePlay.showCellTooltip(message, index);
           break;
         }
@@ -183,6 +183,10 @@ export default class GameController {
             }
       }
 }
+
+  createMessage(character) {
+    return `\u{1F396}${character.level}\u{2694}${character.attack}\u{1F6E1}${character.defence}\u{2764}${character.health}`;
+  }
 
   onCellLeave(index) {
     let cell = this.gamePlay.cells[index];
